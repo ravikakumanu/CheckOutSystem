@@ -43,7 +43,7 @@ public class CheckOutSystemTest {
 		appItems(itemsScanned,1,"orange");
 		appItems(itemsScanned,1,"apple");
 		cost =coSystem.performCheckout(itemsScanned);
-		assertEquals(2.05, cost,1);
+		assertEquals(1.45, cost,1);
 		System.out.println("cost value: "+cost);
 	}
 	@Test
@@ -52,7 +52,7 @@ public class CheckOutSystemTest {
 		itemsScanned = new ArrayList<String>();
 		appItems(itemsScanned,10,"apple");
 		cost =coSystem.performCheckout(itemsScanned);
-		assertEquals(6, cost,1);
+		assertEquals(3.0, cost,1);
 		System.out.println("cost value of apples only: "+cost);
 	}
 	@Test
@@ -61,7 +61,7 @@ public class CheckOutSystemTest {
 		itemsScanned = new ArrayList<String>();
 		appItems(itemsScanned,10,"orange");
 		cost =coSystem.performCheckout(itemsScanned);
-		assertEquals(2.5, cost,1);
+		assertEquals(1.75, cost,1);
 		System.out.println("cost value of oranges only: "+cost);
 	}
 	
@@ -74,5 +74,15 @@ public class CheckOutSystemTest {
 		System.out.println("cost value of no products: "+cost);
 	}
 
+	@Test
+	public void test06CheckOutSystemWithoffers() {
+		CheckOutSystem coSystem = new CheckOutSystem();
+		itemsScanned = new ArrayList<String>();
+		appItems(itemsScanned,1,"orange");
+		appItems(itemsScanned,1,"apple");
+		cost =coSystem.performCheckout(itemsScanned);
+		assertEquals(0.85, cost,1);
+		System.out.println("cost value of  products after offer: "+cost);
+	}
 	
 }
